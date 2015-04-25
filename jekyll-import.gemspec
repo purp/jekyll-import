@@ -52,6 +52,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency('mysql2', "~> 0.3")
   s.add_development_dependency('behance', "~> 0.3")
   s.add_development_dependency('unidecode')
+  s.add_development_dependency('reverse_markdown')
+  s.add_development_dependency('mtif')
 
   # site dependencies:
   s.add_development_dependency('launchy', '~> 2.4')

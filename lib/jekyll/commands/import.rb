@@ -20,6 +20,7 @@ module Jekyll
         :marley => 'Marley',
         :mephisto => 'Mephisto',
         :mt => 'MT',
+        :mtif => 'MTIF',
         :posterous => 'Posterous',
         :rss => 'RSS',
         :s9y => 'S9Y',
