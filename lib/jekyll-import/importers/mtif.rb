@@ -28,9 +28,10 @@ module JekyllImport
         # Ignored for now: comment ping
         translated_keys = [:author, :title, :basename, :date, :status, :excerpt, :category, :tag, :keywords, :body, :extended_body]
         ignored_keys = [:comment, :ping]
-        extra_keys = post.data.keys - translated_keys - ignored_keys
         
         mtif.posts.each do |post|
+          extra_keys = post.data.keys - translated_keys - ignored_keys
+
           front_matter = {
             :layout => 'post',
             :author => post.author,
