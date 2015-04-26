@@ -23,7 +23,7 @@ module JekyllImport
         mtif_input = ::MTIF.load_file(source)
 
         # Ignored for now: comment ping
-        translated_keys = [:author, :title, :basename, :date, :status, :excerpt, :category, :tag, :keywords, :body, :extended_body]
+        translated_keys = [:author, :title, :basename, :date, :status, :unique_url, :excerpt, :category, :tag, :keywords, :body, :extended_body]
         ignored_keys = [:comment, :ping]
         
         mtif_input.posts.each do |post|
