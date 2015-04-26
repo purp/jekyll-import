@@ -58,8 +58,9 @@ module JekyllImport
         end
       end
 
-      def output_filename(post)
-        "_posts/#{post.date.strftime('%Y-%m-%d')}-#{post.basename}.md"
+      def self.output_filename(post)
+        # markdown suffix serves well for HTML and markdown
+        "_posts/#{post.date.strftime('%Y-%m-%d')}-#{post.basename}.markdown"
       end
 
       def body(post)
