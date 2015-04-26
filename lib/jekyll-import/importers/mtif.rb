@@ -22,14 +22,13 @@ module JekyllImport
       def self.process(options)
         source = options.fetch('source')
 
-        mtif = ::MTIF.load_file(source)
-
+        mtif_input = ::MTIF.load_file(source)
 
         # Ignored for now: comment ping
         translated_keys = [:author, :title, :basename, :date, :status, :excerpt, :category, :tag, :keywords, :body, :extended_body]
         ignored_keys = [:comment, :ping]
         
-        mtif.posts.each do |post|
+        mtif_input.posts.each do |post|
           extra_keys = post.data.keys - translated_keys - ignored_keys
 
           front_matter = {
