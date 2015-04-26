@@ -45,7 +45,7 @@ module JekyllImport
           
           extra_keys.each do |key|
             extra_key = "mtif_#{key}".to_sym
-            front_matter[extra_key] = post.key
+            front_matter[extra_key] = post.send(key)
           end
 
           body = extract_body(post)
