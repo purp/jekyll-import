@@ -36,6 +36,7 @@ module JekyllImport
             :date => post.date,
             :published => (post.status == 'Publish'),
             :basename => post.basename,
+            :permalink => permalink(post),
             :categories => post.category,
             :tags => post.tags,
             :keywords => post.keywords.chomp.gsub("\n",","),
@@ -65,6 +66,10 @@ module JekyllImport
         content = post.body
         content += "\n" + post.extended_body unless post.extended_body.nil? || post.extended_body.empty?
         ReverseMarkdown.convert content
+      end
+      
+      def self.permalink(post)
+        URI.parse(post.unique_url).path
       end
     end
   end
