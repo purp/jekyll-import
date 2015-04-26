@@ -38,8 +38,8 @@ module JekyllImport
             :basename => post.basename,
             :permalink => permalink(post),
             :categories => post.category,
-            :tags => post.tags,
             :keywords => post.keywords.chomp.gsub("\n",","),
+            :tags => post.tag,
             :excerpt => post.excerpt
           }.delete_if {|key, value| value.nil? || (value.respond_to?(:empty?) && value.empty?)}
           
