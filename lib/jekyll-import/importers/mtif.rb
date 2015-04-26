@@ -4,15 +4,13 @@ module JekyllImport
   module Importers
     class MTIF < Importer
       def self.require_deps
-        JekyllImport.require_with_fallback(
-        %w[
+        JekyllImport.require_with_fallback(%w[
           rubygems
           fileutils
           safe_yaml
           reverse_markdown
           mtif
-        ]
-        )
+        ])
       end
 
       def self.specify_options(c)
