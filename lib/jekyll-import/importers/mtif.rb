@@ -53,7 +53,7 @@ module JekyllImport
           body = body(post, convert_to_markdown)
 
           post_file = File.open(output_filename(post), "w")
-          post_file << front_matter.to_yaml
+          post_file << stringify_keys(front_matter).to_yaml
           post_file << "---\n"
           post_file << body
           post_file.close
@@ -77,6 +77,14 @@ module JekyllImport
       
       def self.permalink(post)
         URI.parse(post.unique_url).path
+      end
+      
+      def self.strigify_keys(hash)
+        result = hash.class.new
+        hash.keys.each do |key|
+          result[key.to_s] = hash[key]
+        end
+        result
       end
     end
   end
