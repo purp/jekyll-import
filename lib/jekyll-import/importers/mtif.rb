@@ -32,7 +32,7 @@ module JekyllImport
           front_matter = {
             :layout => 'post',
             :author => post.author,
-            :title => '"' + post.title.gsub('"', '\"') + '"'
+            :title => post.title,
             :date => post.date,
             :published => (post.status == 'Publish'),
             :basename => post.basename,
