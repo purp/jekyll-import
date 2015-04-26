@@ -87,6 +87,11 @@ module JekyllImport
         end
         result
       end
+      
+      # What I could puzzle out about TypePad.com's default slug choices.
+      def self.typepad_slugify(title)
+        title.gsub(/[\s+!?|'\._ö@,\/\\%\*\"\:\=\(\)\[\]\<\>\»\«\{\}&]/,'-').gsub(/\-+/,'-').gsub(/^\-/,'').downcase
+      end
     end
   end
 end
