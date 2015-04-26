@@ -8,6 +8,7 @@ module JekyllImport
           rubygems
           fileutils
           safe_yaml
+          uri
           reverse_markdown
           mtif
         ])
