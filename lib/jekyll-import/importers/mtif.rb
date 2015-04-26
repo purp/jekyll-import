@@ -15,10 +15,12 @@ module JekyllImport
 
       def self.specify_options(c)
         c.option 'source', '--source FILE', 'Movable Type Import Format file'
+        c.option 'convert_to_markdown', '--convert_to_markdown', 'convert all HTML content to Markdown'
       end
 
       def self.process(options)
         source = options.fetch('source')
+        convert_to_markdown = options.fetch('convert_to_markdown', false)
 
         mtif_input = ::MTIF.load_file(source)
 
@@ -48,7 +50,7 @@ module JekyllImport
             front_matter[extra_key] = post.send(key)
           end
 
-          body = extract_body(post)
+          body = body(post, convert_to_markdown)
 
           post_file = File.open(output_filename(post), "w")
           post_file << front_matter.to_yaml
@@ -63,10 +65,14 @@ module JekyllImport
         "_posts/#{post.date.strftime('%Y-%m-%d')}-#{post.basename}.markdown"
       end
 
-      def body(post)
+      def self.body(post, convert_to_markdown)
         content = post.body
         content += "\n" + post.extended_body unless post.extended_body.nil? || post.extended_body.empty?
-        ReverseMarkdown.convert content
+        if convert_to_markdown
+          ReverseMarkdown.convert content
+        else
+          content
+        end
       end
       
       def self.permalink(post)
